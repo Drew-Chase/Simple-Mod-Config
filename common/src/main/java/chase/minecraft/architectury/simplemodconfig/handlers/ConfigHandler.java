@@ -1,2 +1,5 @@
-package chase.minecraft.architectury.simplemodconfig;public class ConfigHandler {
+package chase.minecraft.architectury.simplemodconfig.handlers;
+
+public class ConfigHandler
+{
 }
