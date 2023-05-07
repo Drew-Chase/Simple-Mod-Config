@@ -49,3 +49,29 @@ allprojects {
         withSourcesJar()
     }
 }
+
+tasks.register('copyBuildArtifacts', Copy) {
+    println("Copying build artifacts to dist directory")
+    var distDir = layout.projectDirectory.dir("dist/${rootProject.mod_version}");
+    var forgeDir = layout.projectDirectory.dir("/forge/build/libs/");
+    var fabricDir = layout.projectDirectory.dir("/fabric/build/libs/");
+    println("> FROM: ${forgeDir}, TO: ${layout.projectDirectory.dir("dist")}");
+    from forgeDir
+    include "*${rootProject.mod_version}.jar"
+    into distDir
+
+    println("> FROM: ${fabricDir}, TO: ${distDir}");
+    from fabricDir
+    include "${rootProject.mod_version}*.jar"
+    into distDir
+}
+tasks.named("copyBuildArtifacts") {
+    group = "build";
+    description = "Copys build artifacts from individual build directories to root dist directory"
+    dependsOn("build")
+}
+tasks.named("build") { finalizedBy("copyBuildArtifacts") }
+configure("copyBuildArtifacts") {
+    group = "build";
+    description = "Copys build artifacts from individual build directories to root dist directory"
+}
