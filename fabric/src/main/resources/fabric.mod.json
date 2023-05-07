@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "simple-mod-config",
+  "version": "${version}",
+
+  "name": "Simple Mod Config",
+  "description": "A minecraft modding framework for creating configuration files for both client and server",
+  "authors": [],
+  "contact": {},
+
+  "license": "Apache 2.0",
+  "icon": "icon.png",
+
+  "environment": "*",
+  "entrypoints": {},
+  "mixins": [
+    "simple-mod-config.mixins.json",
+    "simple-mod-config-common.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.19",
+    "minecraft": ">=1.19.4"
+  }
+}
