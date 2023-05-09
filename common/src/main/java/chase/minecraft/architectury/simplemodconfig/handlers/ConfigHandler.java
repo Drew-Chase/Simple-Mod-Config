@@ -43,7 +43,8 @@ public class ConfigHandler<T>
 		this.name = name;
 		this.displayName = displayName;
 		CONFIG_FILE = Path.of(Platform.getConfigFolder().toString(), "%s.json".formatted(name)).toFile();
-		this.initialConfig = this.config = initialConfig;
+		this.initialConfig = initialConfig;
+		this.config = initialConfig;
 		load();
 	}
 	
@@ -126,11 +127,24 @@ public class ConfigHandler<T>
 		return get(name, config);
 	}
 	
+	/**
+	 * This Java function returns an object from the initial configuration based on a given name, and it may return null.
+	 *
+	 * @param name A string representing the name of the object to retrieve from the initial configuration.
+	 * @return The method `getInitial` returns an `Object` that may be nullable. The specific object being returned depends on the implementation of the `get` method and the value of the `initialConfig` parameter passed to it.
+	 */
 	public @Nullable Object getInitial(String name)
 	{
 		return get(name, initialConfig);
 	}
 	
+	/**
+	 * This Java function attempts to retrieve a field value from a given object based on its name and returns null if it fails.
+	 *
+	 * @param name   The name of the field that we want to retrieve from the config object.
+	 * @param config The `config` parameter is an object of a generic type `T`, which represents a configuration object. The method is designed to retrieve a field value from this configuration object.
+	 * @return The method is returning a nullable object. If the field with the given name exists and has the required annotation, then the value of that field from the given config object is returned. Otherwise, null is returned.
+	 */
 	private @Nullable Object get(String name, T config)
 	{
 		try
@@ -147,11 +161,23 @@ public class ConfigHandler<T>
 		return null;
 	}
 	
+	/**
+	 * This function checks if a given field name has any associated configuration options.
+	 *
+	 * @param fieldName fieldName is a String parameter that represents the name of a field in a class. The method checks if this field has any annotations associated with it by calling the getConfigOptions() method. If the getConfigOptions() method returns a non-null value, it means that the field has annotations and the method returns true
+	 * @return The method `hasAnnotation` is returning a boolean value. It returns `true` if the `getConfigOptions` method returns a non-null value for the given `fieldName`, indicating that the field has an annotation. Otherwise, it returns `false`.
+	 */
 	private boolean hasAnnotation(String fieldName)
 	{
 		return getConfigOptions(fieldName) != null;
 	}
 	
+	/**
+	 * This function retrieves the SimpleConfig annotation for a given field name in a configuration file.
+	 *
+	 * @param fieldName fieldName is a String parameter that represents the name of the field for which we want to retrieve the SimpleConfig annotation.
+	 * @return The method is returning an object of type `SimpleConfig` which is annotated on the field with the given `fieldName`. If the field is not found, it returns `null`.
+	 */
 	public @Nullable SimpleConfig getConfigOptions(String fieldName)
 	{
 		try
@@ -177,11 +203,11 @@ public class ConfigHandler<T>
 		return get(name) != null;
 	}
 	
+	
 	/**
-	 * Returns a HashMap containing all the fields and their corresponding types of the class
-	 * specified in the configuration object.
+	 * This function retrieves all fields with a specific annotation from a given object and returns them in a HashMap.
 	 *
-	 * @return HashMap<String, Type> containing all the fields and their corresponding types
+	 * @return A HashMap containing the names and values of all fields in the "config" object that have an annotation.
 	 */
 	public HashMap<String, Object> getAll()
 	{
@@ -202,6 +228,11 @@ public class ConfigHandler<T>
 		return map;
 	}
 	
+	/**
+	 * This function returns a LinkedHashMap with all entries sorted based on their index value in the configuration options.
+	 *
+	 * @return The method is returning a LinkedHashMap<String, Object> object.
+	 */
 	public LinkedHashMap<String, Object> getAllSorted()
 	{
 		LinkedHashMap<String, Object> sortedMap = new LinkedHashMap<>();
@@ -211,6 +242,12 @@ public class ConfigHandler<T>
 		return sortedMap;
 	}
 	
+	/**
+	 * This function returns a tooltip with information about a configuration option.
+	 *
+	 * @param name The name of the configuration option for which the tooltip is being generated.
+	 * @return A Component object is being returned.
+	 */
 	public Component getTooltip(String name)
 	{
 		Object value = Objects.requireNonNull(get(name));
@@ -272,6 +309,11 @@ public class ConfigHandler<T>
 		save(initialConfig);
 	}
 	
+	/**
+	 * The function resets a field in an object to its initial value based on the field name.
+	 *
+	 * @param name The name of the field that needs to be reset.
+	 */
 	public void reset(String name)
 	{
 		
@@ -320,6 +362,11 @@ public class ConfigHandler<T>
 		this.displayName = displayName;
 	}
 	
+	/**
+	 * Returns the json representation of the configuration file
+	 *
+	 * @return json
+	 */
 	@Override
 	public String toString()
 	{
