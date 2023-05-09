@@ -1,7 +1,7 @@
 <link href="/Simple-Mod-Config/style.min.css" rel="stylesheet">
 <link rel="shortcut icon" href="/Simple-Mod-Config/images/Simple Config Logo.svg" type="image/x-icon">
 
-![Simple Config Banner.svg](images%2FSimple%20Config%20Banner.svg)
+![Simple Config Banner.svg](docs/images%2FSimple%20Config%20Banner.svg)
 
 # What is Simple Mod Config
 
