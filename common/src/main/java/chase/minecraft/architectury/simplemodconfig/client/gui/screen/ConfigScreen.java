@@ -21,12 +21,15 @@ public class ConfigScreen extends Screen
 	private final ConfigHandler<?> configHandler;
 	private ConfigListComponent configListComponent;
 	
+	public ConfigScreen(ConfigHandler<?> configHandler) {this(configHandler, null);}
+	
 	public ConfigScreen(ConfigHandler<?> configHandler, @Nullable Screen parent)
 	{
 		super(configHandler.getDisplayName());
 		this.parent = parent;
 		this.configHandler = configHandler;
 	}
+	
 	
 	@Override
 	protected void init()
@@ -36,7 +39,7 @@ public class ConfigScreen extends Screen
 		addRenderableWidget(createButton((width / 2) - 110, height - 25, 100, 20, Component.translatable("simplemodconfig.gui.reset.all"), button ->
 		{
 			configHandler.reset();
-			configListComponent.refreshEntries();
+			configListComponent.resetEntries();
 			button.setFocused(false);
 		}));
 		addRenderableWidget(createButton((width / 2) + 10, height - 25, 100, 20, CommonComponents.GUI_DONE, button ->
