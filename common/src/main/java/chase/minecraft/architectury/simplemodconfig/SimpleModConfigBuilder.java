@@ -17,7 +17,7 @@ public class SimpleModConfigBuilder
 	
 	@Nullable
 	private CommandHandler cmdHandler = null;
-	private final ConfigHandler<?> configHandler;
+	public final ConfigHandler<?> configHandler;
 	
 	public SimpleModConfigBuilder(ConfigHandler<?> configHandler)
 	{
