@@ -2,17 +2,21 @@
   "schemaVersion": 1,
   "id": "simple-mod-config",
   "version": "${version}",
-
   "name": "Simple Mod Config",
   "description": "A minecraft modding framework for creating configuration files for both client and server",
   "authors": [],
   "contact": {},
-
   "license": "Apache 2.0",
   "icon": "icon.png",
-
   "environment": "*",
-  "entrypoints": {},
+  "entrypoints": {
+    "client": [
+      "chase.minecraft.architectury.simplemodconfig.fabric.TestModClientFabric"
+    ],
+    "main": [
+      "chase.minecraft.architectury.simplemodconfig.fabric.SimpleModConfigFabric"
+    ]
+  },
   "mixins": [
     "simple-mod-config.mixins.json",
     "simple-mod-config-common.mixins.json"
