@@ -30,6 +30,9 @@ import static net.minecraft.commands.Commands.argument;
 import static net.minecraft.commands.Commands.literal;
 
 
+/**
+ * The CommandHandler class registers and handles commands with sub-commands and configuration options
+ */
 public class CommandHandler
 {
 	private final ConfigHandler<?> configHandler;
@@ -44,6 +47,12 @@ public class CommandHandler
 		this.configHandler = configHandler;
 	}
 	
+	/**
+	 * This function registers a command with a given name and permission level, which can execute sub-commands and reload a configuration file.
+	 *
+	 * @param dispatcher The CommandDispatcher object that is used to register the command with the server.
+	 * @param permissionLevel The permission level required to execute the command. In this case, it is set to 4, which is typically reserved for administrators or operators.
+	 */
 	public void register(CommandDispatcher<CommandSourceStack> dispatcher, int permissionLevel)
 	{
 		LiteralArgumentBuilder<CommandSourceStack> cmd = literal(cmdName)
@@ -73,6 +82,14 @@ public class CommandHandler
 		dispatcher.register(cmd);
 	}
 	
+	/**
+	 * This function builds a subcommand for a command with different argument types based on the type of the input value.
+	 *
+	 * @param name The name of the subcommand being created.
+	 * @param value The value to be set for the configuration option. It can be a String, Boolean, Integer, Float, Double, or Long depending on the type of the configuration option.
+	 * @param sub A LiteralArgumentBuilder object representing a subcommand that will be added to the main command.
+	 * @return The method is returning a LiteralArgumentBuilder object with sub-commands added based on the type of the value parameter.
+	 */
 	private LiteralArgumentBuilder<CommandSourceStack> getSubCommand(String name, Object value, LiteralArgumentBuilder<CommandSourceStack> sub)
 	{
 		SimpleConfig options = configHandler.getConfigOptions(name);
@@ -143,6 +160,11 @@ public class CommandHandler
 		return getSubCommand(name, value, literal(name));
 	}
 	
+	/**
+	 * This Java function returns a component containing a formatted display name and a list of configuration entries with associated hover and click events.
+	 *
+	 * @return The method is returning a Component object.
+	 */
 	public Component getAll()
 	{
 		MutableComponent component = displayName.copy();
@@ -160,6 +182,12 @@ public class CommandHandler
 		return component;
 	}
 	
+	/**
+	 * This function returns a component with a formatted string based on the value retrieved from a config handler.
+	 *
+	 * @param name The name of the component to retrieve from the configHandler.
+	 * @return The method is returning a Component object.
+	 */
 	public Component get(String name)
 	{
 		MutableComponent component = Component.literal("%s%s%s: ".formatted(ChatFormatting.GOLD, name, ChatFormatting.RESET));
