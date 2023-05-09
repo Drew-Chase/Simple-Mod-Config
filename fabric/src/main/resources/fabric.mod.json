@@ -15,7 +15,8 @@
     ],
     "main": [
       "chase.minecraft.architectury.simplemodconfig.fabric.SimpleModConfigFabric"
-    ]
+    ],
+    "modmenu": ["chase.minecraft.architectury.simplemodconfig.fabric.TestModMenu"]
   },
   "mixins": [
     "simple-mod-config.mixins.json",
