@@ -37,17 +37,9 @@ Create a class, for this we will name it `ModMenuEntry` and this class with `imp
 ### Example:
 ```java
 @Override
-public ConfigScreenFactory<ConfigScreen> getModConfigScreenFactory()
+public ConfigScreenFactory<?> getModConfigScreenFactory()
 {
-    return new ConfigScreenFactory<ConfigScreen>()
-    {
-        @Override
-        public ConfigScreen create(Screen screen)
-        {
-            /// You're SimpleModConfigBuilder instance
-            return new ConfigScreen(builder.configHandler, screen);
-        }
-    };
+    return (ConfigScreenFactory<ConfigScreen>) screen -> new ConfigScreen(SimpleModConfig.builder.configHandler, screen);
 }
 ```
 
