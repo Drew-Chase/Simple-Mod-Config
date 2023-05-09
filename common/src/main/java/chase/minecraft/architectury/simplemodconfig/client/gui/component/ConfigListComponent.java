@@ -50,22 +50,28 @@ public class ConfigListComponent extends ContainerObjectSelectionList<ConfigList
 	
 	public void refreshEntries()
 	{
-		for (Entry item : children())
-		{
-			item.refreshEntry();
-		}
+		children().forEach(Entry::refreshEntry);
 	}
 	
 	public void save()
 	{
-		children().forEach(entry -> ((ConfigEntry) entry).save());
+		children().forEach(Entry::save);
 		configHandler.save();
+	}
+	
+	public void resetEntries()
+	{
+		children().forEach(Entry::reset);
 	}
 	
 	@Environment(EnvType.CLIENT)
 	public static abstract class Entry extends ContainerObjectSelectionList.Entry<Entry>
 	{
 		public abstract void refreshEntry();
+		
+		public abstract void save();
+		
+		public abstract void reset();
 	}
 	
 	public class ConfigEntry extends Entry
@@ -174,38 +180,35 @@ public class ConfigListComponent extends ContainerObjectSelectionList<ConfigList
 			} else if (value instanceof Number && inputWidget instanceof EditBox editBox)
 			{
 				
-				if (!editBox.isFocused())
-				{
-					double number = Double.parseDouble(editBox.getValue());
-					if (number > options.max())
-					{
-						String t = String.valueOf(options.max());
-						((EditBox)inputWidget).setValue(t);
-					} else if (number < options.min())
-					{
-						editBox.setValue(String.valueOf(options.min()));
-					}
-				}
-				
-				
 				if (editBox.getValue().isEmpty())
 				{
 					if (!editBox.isFocused())
 						reset();
 				} else
 				{
-					if (value instanceof Integer)
+					if (value instanceof Number)
 					{
-						value = (int) Double.parseDouble(editBox.getValue());
-					} else if (value instanceof Float)
-					{
-						value = Float.parseFloat(editBox.getValue());
-					} else if (value instanceof Double)
-					{
-						value = Double.parseDouble(editBox.getValue());
-					} else if (value instanceof Long)
-					{
-						value = (long) Double.parseDouble(editBox.getValue());
+						if (!editBox.isFocused())
+						{
+							double number = Double.parseDouble(editBox.getValue());
+							if (number > options.max() || number < options.min())
+							{
+								reset();
+							}
+						}
+						if (value instanceof Integer)
+						{
+							value = (int) Double.parseDouble(editBox.getValue());
+						} else if (value instanceof Float)
+						{
+							value = Float.parseFloat(editBox.getValue());
+						} else if (value instanceof Double)
+						{
+							value = Double.parseDouble(editBox.getValue());
+						} else if (value instanceof Long)
+						{
+							value = (long) Double.parseDouble(editBox.getValue());
+						}
 					}
 				}
 			} else if (value instanceof String)
