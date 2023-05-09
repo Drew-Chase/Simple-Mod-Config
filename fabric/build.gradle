@@ -15,6 +15,16 @@ configurations {
     runtimeClasspath.extendsFrom common
     developmentFabric.extendsFrom common
 }
+repositories {
+    // Add the modrinth maven
+    maven {
+        url = "https://api.modrinth.com/maven"
+    }
+    // Modmenu
+    maven {
+        url = "https://maven.terraformersmc.com/releases/"
+    }
+}
 
 dependencies {
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
@@ -24,6 +34,8 @@ dependencies {
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
+    modImplementation include("com.terraformersmc:modmenu:${rootProject.modmenu}")
+
 }
 
 processResources {
