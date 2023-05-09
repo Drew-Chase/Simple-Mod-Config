@@ -100,3 +100,6 @@ public void initClient()
     builder.withKey(InputConstants.KEY_NUMPAD0, "mod_id.category");
 }
 ```
+
+## Screenshot
+![config-screen.png](images%2Fconfig-screen.png)
