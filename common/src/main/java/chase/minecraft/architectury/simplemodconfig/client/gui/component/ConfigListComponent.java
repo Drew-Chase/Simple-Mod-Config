@@ -23,17 +23,24 @@ import static chase.minecraft.architectury.simplemodconfig.client.gui.GUIFactory
 @Environment(EnvType.CLIENT)
 public class ConfigListComponent extends ContainerObjectSelectionList<ConfigListComponent.Entry>
 {
+	@NotNull
 	private final ConfigHandler<?> configHandler;
 	private final Screen parent;
 	
-	public ConfigListComponent(Screen parent, ConfigHandler<?> configHandler)
+	public ConfigListComponent(Screen parent, @NotNull ConfigHandler<?> configHandler, int width, int height, int startY, int endY, int startX, int itemHeight)
 	{
-		super(Minecraft.getInstance(), parent.width, parent.height + 15, 30, parent.height - 32, 30);
+		super(Minecraft.getInstance(), width, height, startY, endY, itemHeight);
+		this.x0 = startX;
 		this.configHandler = configHandler;
 		this.parent = parent;
 		clearEntries();
 		configHandler.getAllSorted().forEach((key, value) -> addEntry(new ConfigEntry(key, value)));
 		refreshEntries();
+	}
+	
+	public ConfigListComponent(Screen parent, @NotNull ConfigHandler<?> configHandler)
+	{
+		this(parent, configHandler, parent.width, parent.height, 30, parent.height - 32, 0, 30);
 	}
 	
 	@Override
@@ -62,6 +69,12 @@ public class ConfigListComponent extends ContainerObjectSelectionList<ConfigList
 	public void resetEntries()
 	{
 		children().forEach(Entry::reset);
+	}
+	
+	@Override
+	public void render(PoseStack poseStack, int i, int j, float f)
+	{
+		super.render(poseStack, i, j, f);
 	}
 	
 	@Environment(EnvType.CLIENT)
@@ -139,7 +152,7 @@ public class ConfigListComponent extends ContainerObjectSelectionList<ConfigList
 			}
 			
 			// Render Label
-			ConfigListComponent.this.minecraft.font.draw(poseStack, this.displayName, 20, y + minecraft.font.lineHeight, 0xFF_FF_FF);
+			ConfigListComponent.this.minecraft.font.draw(poseStack, this.displayName, ConfigListComponent.this.x0 + 20, y + minecraft.font.lineHeight, 0xFF_FF_FF);
 			
 			// Render Buttons
 			int buttonPadding = 4;
