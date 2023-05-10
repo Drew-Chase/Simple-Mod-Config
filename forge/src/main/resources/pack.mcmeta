@@ -1,6 +1,6 @@
 {
   "pack": {
-    "description": "simple-mod-config resources",
+    "description": "simplemodconfig resources",
     "pack_format": 13,
     "forge:server_data_pack_format": 12
   }

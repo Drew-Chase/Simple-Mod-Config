@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "simple-mod-config",
+  "id": "simplemodconfig",
   "version": "${version}",
   "name": "Simple Mod Config",
   "description": "A minecraft modding framework for creating configuration files for both client and server",
@@ -19,8 +19,8 @@
     "modmenu": ["chase.minecraft.architectury.simplemodconfig.fabric.TestModMenu"]
   },
   "mixins": [
-    "simple-mod-config.mixins.json",
-    "simple-mod-config-common.mixins.json"
+    "simplemodconfig.mixins.json",
+    "simplemodconfig-common.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.14.19",
