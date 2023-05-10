@@ -17,7 +17,7 @@ and any other minecraft modding platforms that popup throughout the years.
 
 - [Installation](#installation)
 - [Getting Started](https://dcmanproductions.github.io/Simple-Mod-Config/getting-started)
-- [Mod Menu](https://dcmanproductions.github.io/Simple-Mod-Config/mod-menu)
+- [Mod Menu](https://dcmanproductions.github.io/Simple-Mod-Config/modmenu)
 
 # Installation
 
