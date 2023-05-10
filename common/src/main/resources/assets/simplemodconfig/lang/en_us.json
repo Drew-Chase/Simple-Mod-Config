@@ -1,5 +1,7 @@
 {
   "simplemodconfig.openconfig": "Open Config",
   "simplemodconfig.gui.reset.all": "Reset All",
+  "simplemodconifg.title": "Simple Mod Config",
+  "narrator.button.simplemodconfig": "Open Simple Mod Config List",
   "simplemodconfig.category": "Simple Mod Config"
 }
