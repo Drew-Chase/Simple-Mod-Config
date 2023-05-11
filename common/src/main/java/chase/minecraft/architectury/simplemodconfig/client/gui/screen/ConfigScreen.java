@@ -54,6 +54,6 @@ public class ConfigScreen extends Screen
 	public void render(@NotNull PoseStack poseStack, int x, int y, float partialTicks)
 	{
 		super.render(poseStack, x, y, partialTicks);
-		drawCenteredString(poseStack, font, title.getString(), (width / 2) - (font.width(title.getString()) / 2), font.lineHeight, 0xff_ff_ff);
+		drawCenteredString(poseStack, font, title.getString(), (width / 2), font.lineHeight, 0xff_ff_ff);
 	}
 }
