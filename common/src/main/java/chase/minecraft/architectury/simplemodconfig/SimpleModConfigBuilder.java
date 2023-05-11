@@ -3,7 +3,7 @@ package chase.minecraft.architectury.simplemodconfig;
 import chase.minecraft.architectury.simplemodconfig.client.gui.screen.ConfigScreen;
 import chase.minecraft.architectury.simplemodconfig.handlers.CommandHandler;
 import chase.minecraft.architectury.simplemodconfig.handlers.ConfigHandler;
-import chase.minecraft.architectury.simplemodconfig.handlers.LoadedMods;
+import chase.minecraft.architectury.simplemodconfig.handlers.LoadedConfigs;
 import dev.architectury.event.events.client.ClientTickEvent;
 import dev.architectury.event.events.common.CommandRegistrationEvent;
 import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
@@ -24,8 +24,9 @@ public class SimpleModConfigBuilder
 	public SimpleModConfigBuilder(ConfigHandler<?> configHandler, String modDisplayName)
 	{
 		this.configHandler = configHandler;
+		configHandler.setDisplayName(Component.literal(modDisplayName));
 		this.modDisplayName = modDisplayName;
-		LoadedMods.getInstance().add(modDisplayName, configHandler);
+		LoadedConfigs.getInstance().add(modDisplayName, configHandler);
 	}
 	
 	/**

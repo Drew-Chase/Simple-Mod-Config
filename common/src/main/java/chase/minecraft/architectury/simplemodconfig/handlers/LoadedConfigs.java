@@ -7,12 +7,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class LoadedMods
+public class LoadedConfigs
 {
-	private static LoadedMods instance;
+	private static LoadedConfigs instance;
 	private LinkedHashMap<String, ConfigHandler<?>> loaded_mods;
 	
-	protected LoadedMods()
+	protected LoadedConfigs()
 	{
 		loaded_mods = new LinkedHashMap<>();
 	}
@@ -44,6 +44,11 @@ public class LoadedMods
 		return loaded_mods.get(name);
 	}
 	
+	public int size()
+	{
+		return loaded_mods.size();
+	}
+	
 	
 	private void sort()
 	{
@@ -59,10 +64,10 @@ public class LoadedMods
 		SimpleModConfig.log.info("Done sorting loaded mods list: process took {}", stopwatch.stop().elapsed());
 	}
 	
-	public static LoadedMods getInstance()
+	public static LoadedConfigs getInstance()
 	{
 		if (instance == null)
-			instance = new LoadedMods();
+			instance = new LoadedConfigs();
 		return instance;
 	}
 }
