@@ -11,12 +11,14 @@
   "environment": "*",
   "entrypoints": {
     "client": [
-      "chase.minecraft.architectury.simplemodconfig.fabric.TestModClientFabric"
+      "chase.minecraft.architectury.simplemodconfig.fabric.SimpleModConfigClientFabric"
     ],
     "main": [
       "chase.minecraft.architectury.simplemodconfig.fabric.SimpleModConfigFabric"
     ],
-    "modmenu": ["chase.minecraft.architectury.simplemodconfig.fabric.TestModMenu"]
+    "modmenu": [
+      "chase.minecraft.architectury.simplemodconfig.fabric.SimpleModMenuModMenu"
+    ]
   },
   "mixins": [
     "simplemodconfig.mixins.json",
