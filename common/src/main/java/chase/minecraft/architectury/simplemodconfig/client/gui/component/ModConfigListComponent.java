@@ -2,7 +2,7 @@ package chase.minecraft.architectury.simplemodconfig.client.gui.component;
 
 import chase.minecraft.architectury.simplemodconfig.client.gui.screen.ModsConfigListScreen;
 import chase.minecraft.architectury.simplemodconfig.handlers.ConfigHandler;
-import chase.minecraft.architectury.simplemodconfig.handlers.LoadedMods;
+import chase.minecraft.architectury.simplemodconfig.handlers.LoadedConfigs;
 import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -28,9 +28,7 @@ public class ModConfigListComponent extends ContainerObjectSelectionList<ModConf
 	{
 		super(Minecraft.getInstance(), 150, parent.height, 30, parent.height - 32, 30);
 		this.parent = parent;
-		clearEntries();
-		LoadedMods.getInstance().get().forEach((item) -> addEntry(new LoadedModEntry(item.getKey(), item.getValue())));
-		refreshEntries();
+		search("");
 	}
 	
 	@Override
@@ -50,6 +48,18 @@ public class ModConfigListComponent extends ContainerObjectSelectionList<ModConf
 		children().forEach(Entry::refreshEntry);
 	}
 	
+	public void search(String query)
+	{
+		clearEntries();
+		LoadedConfigs.getInstance().get().forEach((item) ->
+		{
+			if (query.isEmpty() || item.getKey().toLowerCase().contains(query.toLowerCase()))
+			{
+				addEntry(new LoadedModEntry(item.getKey(), item.getValue()));
+			}
+		});
+		refreshEntries();
+	}
 	
 	@Environment(EnvType.CLIENT)
 	public static abstract class Entry extends ContainerObjectSelectionList.Entry<Entry>

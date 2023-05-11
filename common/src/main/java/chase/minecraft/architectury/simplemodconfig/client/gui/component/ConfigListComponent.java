@@ -71,10 +71,11 @@ public class ConfigListComponent extends ContainerObjectSelectionList<ConfigList
 		children().forEach(Entry::reset);
 	}
 	
-	@Override
-	public void render(PoseStack poseStack, int i, int j, float f)
+	public void render(PoseStack poseStack, int i, int j, float f, int width, int height, int startY, int endY, int startX)
 	{
 		super.render(poseStack, i, j, f);
+		updateSize(width, height, startY, endY);
+		this.x0 = startX;
 	}
 	
 	@Environment(EnvType.CLIENT)
