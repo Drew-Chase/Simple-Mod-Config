@@ -81,12 +81,13 @@ public class TestConfig
 ## Common
 ```java
 public static SimpleModConfigBuilder builder;
+public static ConfigHandler<TestConfig> configHandler;
 ```
 ```java
 public static void init()
 {
     Component displayName = Component.literal("Test Config");
-    ConfigHandler<TestConfig> configHandler = new ConfigHandler<>("test-config", new TestConfig(), displayName);
+    configHandler = new ConfigHandler<>("test-config", new TestConfig(), displayName);
     builder = new SimpleModConfigBuilder(configHandler)
             .withCommand("test-config", displayName);
 }
@@ -100,6 +101,18 @@ public void initClient()
     builder.withKey(InputConstants.KEY_NUMPAD0, "mod_id.category");
 }
 ```
+
+# Using Config Values
+Getting and setting values is quite simple.
+## Get Value
+```java
+String name = configHandler.getConfig().Name;
+```
+## Set Value
+```java
+configHandler.set("Name", "new value");
+```
+
 
 ## Screenshot
 ![config-screen.png](images%2Fconfig-screen.png)
