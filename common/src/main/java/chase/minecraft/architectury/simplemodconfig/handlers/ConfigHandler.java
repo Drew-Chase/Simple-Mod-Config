@@ -38,10 +38,9 @@ public class ConfigHandler<T>
 	 * @param name          The name of the json file not including the .json
 	 * @param initialConfig The config's initial values.
 	 */
-	public ConfigHandler(String name, T initialConfig, Component displayName)
+	public ConfigHandler(String name, T initialConfig)
 	{
 		this.name = name;
-		this.displayName = displayName;
 		CONFIG_FILE = Path.of(Platform.getConfigFolder().toString(), "%s.json".formatted(name)).toFile();
 		this.initialConfig = initialConfig;
 		this.config = initialConfig;
@@ -253,7 +252,12 @@ public class ConfigHandler<T>
 		Object value = Objects.requireNonNull(get(name));
 		SimpleConfig options = getConfigOptions(name);
 		assert options != null;
-		MutableComponent tooltip = Component.literal("%s%s%s".formatted(ChatFormatting.AQUA, options.displayName(), ChatFormatting.RESET));
+		String displayName = options.displayName();
+		if (displayName.isEmpty())
+		{
+			displayName = name;
+		}
+		MutableComponent tooltip = Component.literal("%s%s%s".formatted(ChatFormatting.AQUA, displayName, ChatFormatting.RESET));
 		if (!options.description().isEmpty())
 		{
 			tooltip.append("\n%s%s%s".formatted(ChatFormatting.GOLD, options.description(), ChatFormatting.RESET));
