@@ -16,37 +16,44 @@ The `min` and `max` parameters can be used to specify the minimum and maximum va
 The `options` parameter can be used to define a set of allowed values for the configuration field.
 
 ### String Config
+
 ```java
 @SimpleConfig()
-public String Name = "Hello World";
+public String Name="Hello World";
 ```
 
 ### String Config with Options
+
 ```java
 @SimpleConfig(options = {"Option 1", "Option 2", "Option 3", "Option 4", "Option 5", "Option 6"})
-public String Options = "Option 1";
+public String Options="Option 1";
 ```
+
 ### Boolean Config
+
 ```java
 @SimpleConfig()
-public boolean Toggle = false;
+public boolean Toggle=false;
 ```
+
 ### Numbers
+
 ```java
 @SimpleConfig(displayName = "Small Number")
-public int SmallNumber = 5;
+public int SmallNumber=5;
 
-@SimpleConfig( displayName = "Large Number")
-public long LargeNumber = 5;
+@SimpleConfig(displayName = "Large Number")
+public long LargeNumber=5;
 
 @SimpleConfig(displayName = "Small Decimal")
-public float SmallDecimal = .5f;
+public float SmallDecimal=.5f;
 
 @SimpleConfig(displayName = "Large Decimal")
-public double LargeDecimal = .5d;
+public double LargeDecimal=.5d;
 ```
 
 ### Example
+
 ```java
 public class TestConfig
 {
@@ -79,17 +86,19 @@ public class TestConfig
 ```
 
 ## Common
+
 ```java
 public static SimpleModConfigBuilder builder;
 public static ConfigHandler<TestConfig> configHandler;
 ```
+
 ```java
-public static void init()
+public static void initConfig()
 {
-    Component displayName = Component.literal("Test Config");
-    configHandler = new ConfigHandler<>("test-config", new TestConfig(), displayName);
-    builder = new SimpleModConfigBuilder(configHandler)
-            .withCommand("test-config", displayName);
+    Component displayName=Component.literal("Test Config");
+    configHandler=new ConfigHandler<>("test-config",new TestConfig(),displayName);
+    builder=new SimpleModConfigBuilder(configHandler)
+    .withCommand("test-config",displayName);
 }
 ```
 
@@ -98,21 +107,26 @@ public static void init()
 ```java
 public void initClient()
 {
-    builder.withKey(InputConstants.KEY_NUMPAD0, "mod_id.category");
+    builder.withKey(InputConstants.KEY_NUMPAD0,"mod_id.category");
 }
 ```
 
 # Using Config Values
+
 Getting and setting values is quite simple.
+
 ## Get Value
+
 ```java
-String name = configHandler.getConfig().Name;
-```
-## Set Value
-```java
-configHandler.set("Name", "new value");
+String name=configHandler.getConfig().Name;
 ```
 
+## Set Value
+
+```java
+configHandler.set("Name","new value");
+```
 
 ## Screenshot
+
 ![config-screen.png](images%2Fconfig-screen.png)

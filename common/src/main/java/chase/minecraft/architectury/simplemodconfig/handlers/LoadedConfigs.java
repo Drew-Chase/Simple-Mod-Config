@@ -17,6 +17,13 @@ public class LoadedConfigs
 		loaded_mods = new LinkedHashMap<>();
 	}
 	
+	public static LoadedConfigs getInstance()
+	{
+		if (instance == null)
+			instance = new LoadedConfigs();
+		return instance;
+	}
+	
 	public void add(String name, ConfigHandler<?> handler)
 	{
 		loaded_mods.put(name, handler);
@@ -49,7 +56,6 @@ public class LoadedConfigs
 		return loaded_mods.size();
 	}
 	
-	
 	private void sort()
 	{
 		SimpleModConfig.log.warn("Sorting loaded mods list, this might take a moment!");
@@ -62,12 +68,5 @@ public class LoadedConfigs
 		loaded_mods = sortedMap;
 		
 		SimpleModConfig.log.info("Done sorting loaded mods list: process took {}", stopwatch.stop().elapsed());
-	}
-	
-	public static LoadedConfigs getInstance()
-	{
-		if (instance == null)
-			instance = new LoadedConfigs();
-		return instance;
 	}
 }

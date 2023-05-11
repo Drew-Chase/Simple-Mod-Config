@@ -92,10 +92,10 @@ public class ConfigListComponent extends ContainerObjectSelectionList<ConfigList
 	{
 		private final String name;
 		private final Button resetButton;
-		private AbstractWidget inputWidget = null;
-		private Object value;
 		private final Component displayName;
 		private final SimpleConfig options;
+		private AbstractWidget inputWidget = null;
+		private Object value;
 		
 		public ConfigEntry(String name, Object value)
 		{

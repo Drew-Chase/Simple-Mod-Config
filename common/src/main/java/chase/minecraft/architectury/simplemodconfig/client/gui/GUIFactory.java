@@ -95,12 +95,12 @@ public class GUIFactory
 	/**
 	 * This function creates a text box for numbers with a specified font, position, size, label, and data type.
 	 *
-	 * @param font The font to be used for the text box.
-	 * @param x The x-coordinate of the top-left corner of the text box.
-	 * @param y The y parameter is an integer value representing the vertical position of the EditBox on the screen or component.
-	 * @param width The width parameter specifies the width of the EditBox in pixels.
+	 * @param font   The font to be used for the text box.
+	 * @param x      The x-coordinate of the top-left corner of the text box.
+	 * @param y      The y parameter is an integer value representing the vertical position of the EditBox on the screen or component.
+	 * @param width  The width parameter specifies the width of the EditBox in pixels.
 	 * @param height The height parameter specifies the height of the EditBox component that will be created.
-	 * @param label The label parameter is a Component object that represents the label associated with the text box. It could be a JLabel or any other type of component that can be used to display text.
+	 * @param label  The label parameter is a Component object that represents the label associated with the text box. It could be a JLabel or any other type of component that can be used to display text.
 	 * @return A static method named `createNumbersTextBox` is being defined which returns an `EditBox` object. The method takes in six parameters: `font` of type `Font`, `x` and `y` of type `int`, `width` and `height` of type `int`, and `label` of type `Component`. The method also calls another overloaded version of the same method
 	 */
 	public static EditBox createNumbersTextBox(Font font, int x, int y, int width, int height, Component label)
@@ -111,14 +111,14 @@ public class GUIFactory
 	/**
 	 * This function creates a cycle button with specified parameters and callbacks.
 	 *
-	 * @param label The label component that will be displayed next to the cycle button.
-	 * @param x The x-coordinate of the CycleButton's position on the screen.
-	 * @param y The y-coordinate of the CycleButton's position on the screen.
-	 * @param width The width of the CycleButton component.
-	 * @param height The height parameter is the height of the CycleButton component that will be created.
-	 * @param initialValue The initial value that the CycleButton should display.
-	 * @param values An array of String values that the CycleButton will cycle through.
-	 * @param tooltip The tooltip is an optional component that provides additional information about the cycle button when the user hovers over it. It can be any type of component, such as a label or a panel.
+	 * @param label         The label component that will be displayed next to the cycle button.
+	 * @param x             The x-coordinate of the CycleButton's position on the screen.
+	 * @param y             The y-coordinate of the CycleButton's position on the screen.
+	 * @param width         The width of the CycleButton component.
+	 * @param height        The height parameter is the height of the CycleButton component that will be created.
+	 * @param initialValue  The initial value that the CycleButton should display.
+	 * @param values        An array of String values that the CycleButton will cycle through.
+	 * @param tooltip       The tooltip is an optional component that provides additional information about the cycle button when the user hovers over it. It can be any type of component, such as a label or a panel.
 	 * @param onValueChange The onValueChange parameter is a Consumer functional interface that takes a String parameter and does some action with it. In this case, it is called when the value of the CycleButton is changed and it accepts the new value as a parameter.
 	 * @param onUpdateLabel A function that takes a String value and returns a Component. This function is called whenever the value of the CycleButton changes, and it is used to update the label of the button with the new value.
 	 * @return This method returns a CycleButton object.

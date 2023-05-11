@@ -15,8 +15,7 @@ public class SimpleModConfigForge
 		// Submit our event bus to let architectury register our content on the right time
 		EventBuses.registerModEventBus(SimpleModConfig.MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
 		SimpleModConfig.init();
-  
-  
+		
 		
 		if (Platform.isDevelopmentEnvironment())
 		{

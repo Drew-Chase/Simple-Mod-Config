@@ -1,8 +1,13 @@
 # Modmenu Support
+
 I'm going to write better modmenu docs them modmenu themselves
+
 ## Dependency
-add the following to your `build.gradle`   
+
+add the following to your `build.gradle`
+
 ### Maven
+
 ```groovy
 repositories {
     // Modmenu maven
@@ -11,30 +16,41 @@ repositories {
     }
 }
 ```
+
 ### Dependency
+
 ```groovy
 dependencies {
     // Modmenu dependency
     modImplementation include("com.terraformersmc:modmenu:${project.modmenu}")
 }
 ```
+
 then add the following to your `gradle.properties`   
 Replace `0.0.0` with your version of modmenu
+
 ```properties
 # Modmenu
 modmenu=0.0.0
 ```
+
 ## Fabric Configuration
+
 Place this entrypoint in you're `fabric.mod.json`
+
 ```json
 "entrypoints": {
 "modmenu": ["project.namespace.ModMenuEntry"]
 },
 ```
+
 ## Mod Menu Entry
-Create a class, for this we will name it `ModMenuEntry` and this class with `implement` `ModMenuApi`, and we will add an override method named `getModConfigScreenFactory()`
+
+Create a class, for this we will name it `ModMenuEntry` and this class with `implement` `ModMenuApi`, and we will add an
+override method named `getModConfigScreenFactory()`
 
 ### Example:
+
 ```java
 @Override
 public ConfigScreenFactory<?> getModConfigScreenFactory()
@@ -44,6 +60,7 @@ public ConfigScreenFactory<?> getModConfigScreenFactory()
 ```
 
 # Overview:
+
 ```java
 package project.namespace;
 

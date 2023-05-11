@@ -16,10 +16,10 @@ import org.jetbrains.annotations.Nullable;
 public class SimpleModConfigBuilder
 {
 	
-	@Nullable
-	private CommandHandler cmdHandler = null;
 	public final ConfigHandler<?> configHandler;
 	public final String modDisplayName;
+	@Nullable
+	private CommandHandler cmdHandler = null;
 	
 	public SimpleModConfigBuilder(ConfigHandler<?> configHandler, String modDisplayName)
 	{

@@ -1,4 +1,3 @@
-
 package chase.minecraft.architectury.simplemodconfig.test;
 
 import chase.minecraft.architectury.simplemodconfig.annotation.SimpleConfig;

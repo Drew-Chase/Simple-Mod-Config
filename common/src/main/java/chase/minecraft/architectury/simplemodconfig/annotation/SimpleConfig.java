@@ -10,6 +10,7 @@ import java.lang.annotation.Target;
 public @interface SimpleConfig
 {
 	int index() default 0;
+	
 	String displayName() default "";
 	
 	String description() default "";

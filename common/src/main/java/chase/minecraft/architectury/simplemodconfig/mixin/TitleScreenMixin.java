@@ -2,7 +2,6 @@ package chase.minecraft.architectury.simplemodconfig.mixin;
 
 import chase.minecraft.architectury.simplemodconfig.SimpleModConfig;
 import chase.minecraft.architectury.simplemodconfig.client.gui.screen.ModsConfigListScreen;
-import chase.minecraft.architectury.simplemodconfig.config.SimpleModConfigConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.TitleScreen;

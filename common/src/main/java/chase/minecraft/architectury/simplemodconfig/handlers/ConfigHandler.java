@@ -27,10 +27,9 @@ public class ConfigHandler<T>
 {
 	public final File CONFIG_FILE;
 	private final String name;
-	
+	private final T initialConfig;
 	private Component displayName;
 	private T config;
-	private final T initialConfig;
 	
 	/**
 	 * Creates a new ConfigHandler object
