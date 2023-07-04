@@ -1,5 +1,7 @@
+<link href="/Simple-Mod-Config/style.min.css" rel="stylesheet">
+<link rel="shortcut icon" href="/Simple-Mod-Config/images/Simple Config Logo.svg" type="image/x-icon">
 # Getting Started
-
+~~~~
 Simple Mod Config can be run on either the client or the server
 
 ## Config File

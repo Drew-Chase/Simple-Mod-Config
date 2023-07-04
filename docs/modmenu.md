@@ -1,3 +1,5 @@
+<link href="/Simple-Mod-Config/style.min.css" rel="stylesheet">
+<link rel="shortcut icon" href="/Simple-Mod-Config/images/Simple Config Logo.svg" type="image/x-icon">
 # Modmenu Support
 
 I'm going to write better modmenu docs them modmenu themselves
