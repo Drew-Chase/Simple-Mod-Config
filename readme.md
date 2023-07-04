@@ -49,7 +49,7 @@ simpleconfig=0.0.1 #put your version here
 ```groovy
 dependencies {
     // Adding a Simple Mod Config dependency for fabric, quilt and architectury
-    modImplementation include("maven.modrinth:simple-mod-config:${project.simpleconfig}")
+    modImplementation include("maven.modrinth:simple-mod-config:fabric-${project.simpleconfig}")
 }
 ```
 
@@ -58,6 +58,6 @@ dependencies {
 ```groovy
 dependencies {
     // Adding a Simple Mod Config dependency for forge
-    implementation fg.deobf("maven.modrinth:simple-mod-config:${project.simpleconfig}")
+    implementation fg.deobf("maven.modrinth:simple-mod-config:forge-${project.simpleconfig}")
 }
 ```
