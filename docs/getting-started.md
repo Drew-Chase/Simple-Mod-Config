@@ -1,7 +1,6 @@
 <link href="/Simple-Mod-Config/style.min.css" rel="stylesheet">
 <link rel="shortcut icon" href="/Simple-Mod-Config/images/Simple Config Logo.svg" type="image/x-icon">
 # Getting Started
-~~~~
 Simple Mod Config can be run on either the client or the server
 
 ## Config File
@@ -96,21 +95,21 @@ public static ConfigHandler<TestConfig> configHandler;
 
 ```java
 public static void initConfig()
-{
-    Component displayName=Component.literal("Test Config");
-    configHandler=new ConfigHandler<>("test-config",new TestConfig(),displayName);
-    builder=new SimpleModConfigBuilder(configHandler)
-    .withCommand("test-config",displayName);
-}
+		{
+		Component displayName=Component.literal("Test Config");
+		configHandler=new ConfigHandler<>("test-config",new TestConfig(),displayName);
+		builder=new SimpleModConfigBuilder(configHandler)
+		.withCommand("test-config",displayName);
+		}
 ```
 
 ## Client
 
 ```java
 public void initClient()
-{
-    builder.withKey(InputConstants.KEY_NUMPAD0,"mod_id.category");
-}
+		{
+		builder.withKey(InputConstants.KEY_NUMPAD0,"mod_id.category");
+		}
 ```
 
 # Using Config Values
