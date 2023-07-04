@@ -4,8 +4,8 @@ import chase.minecraft.architectury.simplemodconfig.client.gui.component.ConfigL
 import chase.minecraft.architectury.simplemodconfig.client.gui.component.ModConfigListComponent;
 import chase.minecraft.architectury.simplemodconfig.handlers.ConfigHandler;
 import chase.minecraft.architectury.simplemodconfig.handlers.LoadedConfigs;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.CommonComponents;
@@ -70,7 +70,7 @@ public class ModsConfigListScreen extends Screen
 			configListComponent.save();
 		}
 		loadedConfigName = name;
-		configListComponent = new ConfigListComponent(this, configHandler, width, height, 30, height, 155, 30);
+		configListComponent = new ConfigListComponent(configHandler, width, height, 30, height, 155, 30);
 	}
 	
 	public boolean isLoaded(String name)
@@ -79,7 +79,7 @@ public class ModsConfigListScreen extends Screen
 	}
 	
 	@Override
-	public void render(PoseStack poseStack, int i, int j, float f)
+	public void render(GuiGraphics graphics, int i, int j, float f)
 	{
 		if (searchBox.getValue().isEmpty())
 		{
@@ -88,13 +88,13 @@ public class ModsConfigListScreen extends Screen
 		{
 			searchBox.setSuggestion("");
 		}
-		super.renderDirtBackground(poseStack);
+		super.renderDirtBackground(graphics);
 		if (configListComponent != null)
 		{
-			configListComponent.render(poseStack, i, j, f, width, height, 30, height, 155);
-			drawCenteredString(poseStack, font, loadedConfigName, ((width + 150) / 2), font.lineHeight, 0xff_ff_ff);
+			configListComponent.render(graphics, i, j, f, width, height, 30, height, 155);
+			graphics.drawCenteredString(font, loadedConfigName, ((width + 150) / 2), font.lineHeight, 0xff_ff_ff);
 		}
-		super.render(poseStack, i, j, f);
+		super.render(graphics, i, j, f);
 	}
 	
 	@Override

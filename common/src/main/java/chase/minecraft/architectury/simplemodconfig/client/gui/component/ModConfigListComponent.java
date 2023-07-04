@@ -5,10 +5,10 @@ import chase.minecraft.architectury.simplemodconfig.handlers.ConfigHandler;
 import chase.minecraft.architectury.simplemodconfig.handlers.LoadedConfigs;
 import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ContainerObjectSelectionList;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.narration.NarratableEntry;
@@ -80,19 +80,19 @@ public class ModConfigListComponent extends ContainerObjectSelectionList<ModConf
 		}
 		
 		@Override
-		public void render(@NotNull PoseStack poseStack, int x, int y, int uk, int widgetWidth, int widgetHeight, int mouseX, int mouseY, boolean isHovering, float partialTicks)
+		public void render(@NotNull GuiGraphics graphics, int x, int y, int uk, int widgetWidth, int widgetHeight, int mouseX, int mouseY, boolean isHovering, float partialTicks)
 		{
 			int parentWidth = ModConfigListComponent.this.width;
 			this.isHovering = isHovering;
 			if (isHovering || ModConfigListComponent.this.parent.isLoaded(name))
 			{
 				RenderSystem.setShaderColor(0f, 0f, 0f, .5f);
-				fill(poseStack, x, y, x + parentWidth, y + widgetHeight, 0xFF_FF_FF_FF);
+				graphics.fill(x, y, x + parentWidth, y + widgetHeight, 0xFF_FF_FF_FF);
 				RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
 			}
 			
 			// Render Label
-			ModConfigListComponent.this.minecraft.font.draw(poseStack, this.name, 5, y + minecraft.font.lineHeight, 0xFF_FF_FF);
+			graphics.drawString(ModConfigListComponent.this.minecraft.font, this.name, 5, y + minecraft.font.lineHeight, 0xFF_FF_FF);
 		}
 		
 		@Override

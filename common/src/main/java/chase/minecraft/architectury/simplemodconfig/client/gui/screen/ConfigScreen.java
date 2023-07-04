@@ -2,9 +2,9 @@ package chase.minecraft.architectury.simplemodconfig.client.gui.screen;
 
 import chase.minecraft.architectury.simplemodconfig.client.gui.component.ConfigListComponent;
 import chase.minecraft.architectury.simplemodconfig.handlers.ConfigHandler;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
@@ -51,9 +51,9 @@ public class ConfigScreen extends Screen
 	}
 	
 	@Override
-	public void render(@NotNull PoseStack poseStack, int x, int y, float partialTicks)
+	public void render(@NotNull GuiGraphics graphics, int x, int y, float partialTicks)
 	{
-		super.render(poseStack, x, y, partialTicks);
-		drawCenteredString(poseStack, font, title.getString(), (width / 2), font.lineHeight, 0xff_ff_ff);
+		super.render(graphics, x, y, partialTicks);
+		graphics.drawCenteredString(font, title.getString(), (width / 2), font.lineHeight, 0xff_ff_ff);
 	}
 }

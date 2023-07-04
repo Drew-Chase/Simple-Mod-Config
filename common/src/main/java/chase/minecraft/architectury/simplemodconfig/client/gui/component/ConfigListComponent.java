@@ -4,10 +4,10 @@ import chase.minecraft.architectury.simplemodconfig.annotation.SimpleConfig;
 import chase.minecraft.architectury.simplemodconfig.handlers.ConfigHandler;
 import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.*;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.narration.NarratableEntry;
@@ -25,14 +25,12 @@ public class ConfigListComponent extends ContainerObjectSelectionList<ConfigList
 {
 	@NotNull
 	private final ConfigHandler<?> configHandler;
-	private final Screen parent;
 	
-	public ConfigListComponent(Screen parent, @NotNull ConfigHandler<?> configHandler, int width, int height, int startY, int endY, int startX, int itemHeight)
+	public ConfigListComponent(@NotNull ConfigHandler<?> configHandler, int width, int height, int startY, int endY, int startX, int itemHeight)
 	{
 		super(Minecraft.getInstance(), width, height, startY, endY, itemHeight);
 		this.x0 = startX;
 		this.configHandler = configHandler;
-		this.parent = parent;
 		clearEntries();
 		configHandler.getAllSorted().forEach((key, value) -> addEntry(new ConfigEntry(key, value)));
 		refreshEntries();
@@ -40,7 +38,7 @@ public class ConfigListComponent extends ContainerObjectSelectionList<ConfigList
 	
 	public ConfigListComponent(Screen parent, @NotNull ConfigHandler<?> configHandler)
 	{
-		this(parent, configHandler, parent.width, parent.height, 30, parent.height - 32, 0, 30);
+		this(configHandler, parent.width, parent.height, 30, parent.height - 32, 0, 30);
 	}
 	
 	@Override
@@ -71,9 +69,9 @@ public class ConfigListComponent extends ContainerObjectSelectionList<ConfigList
 		children().forEach(Entry::reset);
 	}
 	
-	public void render(PoseStack poseStack, int i, int j, float f, int width, int height, int startY, int endY, int startX)
+	public void render(GuiGraphics graphics, int i, int j, float f, int width, int height, int startY, int endY, int startX)
 	{
-		super.render(poseStack, i, j, f);
+		super.render(graphics, i, j, f);
 		updateSize(width, height, startY, endY);
 		this.x0 = startX;
 	}
@@ -141,31 +139,31 @@ public class ConfigListComponent extends ContainerObjectSelectionList<ConfigList
 		}
 		
 		@Override
-		public void render(@NotNull PoseStack poseStack, int x, int y, int uk, int widgetWidth, int widgetHeight, int mouseX, int mouseY, boolean isHovering, float partialTicks)
+		public void render(@NotNull GuiGraphics graphics, int x, int y, int uk, int widgetWidth, int widgetHeight, int mouseX, int mouseY, boolean isHovering, float partialTicks)
 		{
 			update();
 			int parentWidth = ConfigListComponent.this.width;
 			if (isHovering)
 			{
 				RenderSystem.setShaderColor(0f, 0f, 0f, .5f);
-				fill(poseStack, x, y, x + parentWidth, y + widgetHeight, 0xFF_FF_FF_FF);
+				graphics.fill(x, y, x + parentWidth, y + widgetHeight, 0xFF_FF_FF_FF);
 				RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
 			}
 			
 			// Render Label
-			ConfigListComponent.this.minecraft.font.draw(poseStack, this.displayName, ConfigListComponent.this.x0 + 20, y + minecraft.font.lineHeight, 0xFF_FF_FF);
+			graphics.drawString(ConfigListComponent.this.minecraft.font, this.displayName, ConfigListComponent.this.x0 + 20, y + minecraft.font.lineHeight, 0xFF_FF_FF);
 			
 			// Render Buttons
 			int buttonPadding = 4;
 			resetButton.setX(widgetWidth - resetButton.getWidth() + buttonPadding);
 			resetButton.setY(y + (widgetHeight / 2) - (resetButton.getHeight() / 2));
-			resetButton.render(poseStack, mouseX, mouseY, partialTicks);
+			resetButton.render(graphics, mouseX, mouseY, partialTicks);
 			resetButton.active = !Objects.requireNonNull(ConfigListComponent.this.configHandler.getInitial(name)).toString().equalsIgnoreCase(value.toString());
 			resetButton.setFocused(false);
 			
 			inputWidget.setX(resetButton.getX() - inputWidget.getWidth() - buttonPadding);
 			inputWidget.setY(resetButton.getY());
-			inputWidget.render(poseStack, mouseX, mouseY, partialTicks);
+			inputWidget.render(graphics, mouseX, mouseY, partialTicks);
 		}
 		
 		@Override

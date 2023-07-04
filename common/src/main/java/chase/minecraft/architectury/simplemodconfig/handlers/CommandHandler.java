@@ -59,7 +59,7 @@ public class CommandHandler
 				.requires((commandSourceStack) -> commandSourceStack.hasPermission(4))
 				.executes(context ->
 				{
-					context.getSource().sendSuccess(getAll(), true);
+					context.getSource().sendSystemMessage(getAll());
 					return 1;
 				})
 				.then(literal("reload")
@@ -69,7 +69,7 @@ public class CommandHandler
 							MutableComponent message = Component.literal("[");
 							message.append(displayName.copy());
 							message.append("] reloaded config");
-							context.getSource().sendSuccess(message, true);
+							context.getSource().sendSystemMessage(message);
 							return 1;
 						}));
 		
