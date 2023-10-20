@@ -16,8 +16,8 @@ and any other minecraft modding platforms that popup throughout the years.
 # Table of Contents
 
 - [Installation](#installation)
-- [Getting Started](https://dcmanproductions.github.io/Simple-Mod-Config/getting-started)
-- [Mod Menu](https://dcmanproductions.github.io/Simple-Mod-Config/modmenu)
+- [Getting Started](https://drew-chase.github.io/Simple-Mod-Config/getting-started)
+- [Mod Menu](https://drew-chase.github.io/Simple-Mod-Config/modmenu)
 
 # Installation
 
@@ -41,7 +41,7 @@ Add the version to your `gradle.properties` files
 
 ```properties
 #Simple Mod Config Version
-simpleconfig=0.0.1 #put your version here
+simpleconfig=0.0.1
 ```
 
 ## Fabric, Quilt, Architectury
